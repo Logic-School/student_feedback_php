@@ -16,6 +16,7 @@
                 $counsellor = $_POST["service"];
                 $purpose = $_POST["budget"];
                 $rating = $_POST["rating"];
+                $message = $_POST["message"];
                 require_once('ripcord/ripcord.php');
                 $db = "logic_testdb23";
                 $uid = "admin";
@@ -24,7 +25,7 @@
                 $common = ripcord::client("$url/xmlrpc/2/common");
                 $uid = $common->authenticate($db, $uid, $password, array());
                 $models = ripcord::client("$url/xmlrpc/2/object");
-                $id = $models->execute_kw($db, $uid, $password, 'student.feedback', 'create', array(array("student_name"=>"$name","mobile"=>"$mobile", "counsellor"=>"$counsellor", "purpose"=>"$purpose", "rating"=>"$rating")));
+                $id = $models->execute_kw($db, $uid, $password, 'student.feedback', 'create', array(array("student_name"=>"$name","mobile"=>"$mobile", "counsellor"=>"$counsellor", "purpose"=>"$purpose", "rating"=>"$rating","message"=>"$message")));
                 if($id)
                 {
                     include('successful.html');

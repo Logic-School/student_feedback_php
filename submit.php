@@ -30,5 +30,9 @@
                 {
                     include('successful.html');
                 }
+                else
+                {
+                    include('error.html');
+                }
             }
         ?>

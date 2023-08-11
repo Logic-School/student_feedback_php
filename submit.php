@@ -28,19 +28,12 @@
                     $uid = $common->authenticate($db, $uid, $password, array());
                     $models = ripcord::client("$url/xmlrpc/2/object");
                     $id = $models->execute_kw($db, $uid, $password, 'student.feedback', 'create', array(array("student_name"=>"$name","mobile"=>"$mobile", "counsellor"=>"$counsellor", "purpose"=>"$purpose", "rating"=>"$rating","message"=>"$message")));
-                    include('successful.html');
+                    header('location: done.php');
+                    // include('successful.html');
                 }
                 catch(Exception $e)
                 {
-                    include('error.html');
+                    header('location: error.php');
                 }
-                // if($id)
-                // {
-                //     include('successful.html');
-                // }
-                // else
-                // {
-                //     include('error.html');
-                // }
             }
         ?>
